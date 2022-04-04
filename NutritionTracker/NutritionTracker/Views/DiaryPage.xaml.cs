@@ -12,15 +12,15 @@ using Xamarin.Forms.Xaml;
 
 namespace NutritionTracker.Views
 {
-    public partial class FoodsPage : ContentPage
+    public partial class DiarysPage : ContentPage
     {
-        FoodsViewModel _viewModel;
+        DiarysViewModel _viewModel;
 
-        public FoodsPage()
+        public DiarysPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new FoodsViewModel();
+            BindingContext = _viewModel = new DiarysViewModel();
         }
 
         protected override void OnAppearing()

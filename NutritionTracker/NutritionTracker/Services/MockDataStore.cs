@@ -14,12 +14,13 @@ namespace NutritionTracker.Services
         {
             foods = new List<Food>()
             {
-                new Food { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Food { Id = Guid.NewGuid().ToString(), Text = "First food", Description="This is an food description." },
+                new Food { Id = Guid.NewGuid().ToString(), Text = "Second food", Description="This is an food description." },
+                new Food { Id = Guid.NewGuid().ToString(), Text = "Third food", Description="This is an food description." },
+                new Food { Id = Guid.NewGuid().ToString(), Text = "Fourth food", Description="This is an food description." },
+                new Food { Id = Guid.NewGuid().ToString(), Text = "Fifth food", Description="This is an food description." },
+                new Food { Id = Guid.NewGuid().ToString(), Text = "Sixth food", Description="This is an food description." }
+                //have new entries saving to database - or ^ this also saving- so can have show up on refresh
             };
         }
 

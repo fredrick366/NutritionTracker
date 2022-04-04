@@ -11,11 +11,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\DiaryDetailPage.xaml.cs">
+      <DependentUpon>DiaryDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\FoodDetailPage.xaml.cs">
       <DependentUpon>FoodDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\DiaryPage.xaml.cs">
+      <DependentUpon>DiaryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\FoodPage.xaml.cs">
       <DependentUpon>FoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDiaryPage.xaml.cs">
+      <DependentUpon>NewDiaryPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\NewFoodPage.xaml.cs">
       <DependentUpon>NewFoodPage.xaml</DependentUpon>

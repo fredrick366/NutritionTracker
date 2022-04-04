@@ -11,8 +11,10 @@ namespace NutritionTracker
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(FoodDetailPage), typeof(FoodDetailPage));
+            Routing.RegisterRoute(nameof(NewFoodPage), typeof(NewFoodPage));
+            Routing.RegisterRoute(nameof(DiaryDetailPage), typeof(DiaryDetailPage));
+            Routing.RegisterRoute(nameof(NewDiaryPage), typeof(NewDiaryPage));
         }
 
     }

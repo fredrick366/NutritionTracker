@@ -8,14 +8,14 @@ using Xamarin.Forms.Xaml;
 
 namespace NutritionTracker.Views
 {
-    public partial class NewFoodPage : ContentPage
+    public partial class NewDiaryPage : ContentPage
     {
-        public Food Food { get; set; }
+        public Diary Diary { get; set; }
 
-        public NewFoodPage()
+        public NewDiaryPage()
         {
             InitializeComponent();
-            BindingContext = new NewFoodViewModel();
+            BindingContext = new NewDiaryViewModel();
         }
     }
 }
