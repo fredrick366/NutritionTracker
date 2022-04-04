@@ -20,9 +20,8 @@ namespace NutritionTracker.Services
                 new Diary { Id = Guid.NewGuid().ToString(), Text = "Fourth entry", Description="This is an diary description." },
                 new Diary { Id = Guid.NewGuid().ToString(), Text = "Fifth entry", Description="This is an diary description." },
                 new Diary { Id = Guid.NewGuid().ToString(), Text = "Sixth entry", Description="This is an diary description." }
-                //add functionality to page to search for foods then later the radio buttons for meal times and summary button taking values from entry
             };
-        }
+        }//add functionality to page to search for foods then later the radio buttons for meal times and summary button taking values from entry
 
         public async Task<bool> AddDiaryAsync(Diary diary)
         {
