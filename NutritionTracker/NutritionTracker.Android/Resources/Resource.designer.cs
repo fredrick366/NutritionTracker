@@ -11806,7 +11806,7 @@ namespace NutritionTracker.Droid
 			}
 		}
 		
-		public partial class Id
+		public partial class Mipmap
 		{
 			
 			// aapt resource value: 0x7F08000A
@@ -13562,11 +13562,6 @@ namespace NutritionTracker.Droid
 			public const int status_bar_notification_info_overflow = 2131624025;
 			
 			static String()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private String()
 			{
 			}
 		}
