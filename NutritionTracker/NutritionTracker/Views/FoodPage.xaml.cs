@@ -14,13 +14,13 @@ namespace NutritionTracker.Views
 {
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel _viewModel;
+        FoodsViewModel _viewModel;
 
         public ItemsPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new FoodsViewModel();
         }
 
         protected override void OnAppearing()

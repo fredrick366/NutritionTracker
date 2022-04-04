@@ -10,7 +10,7 @@ namespace NutritionTracker.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Food> DataStore => DependencyService.Get<IDataStore<Food>>();
 
         bool isBusy = false;
         public bool IsBusy

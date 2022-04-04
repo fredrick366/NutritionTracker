@@ -6,10 +6,10 @@ namespace NutritionTracker.Services
 {
     public interface IDataStore<T>
     {
-        Task<bool> AddItemAsync(T item);
-        Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(string id);
-        Task<T> GetItemAsync(string id);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<bool> AddFoodAsync(T food);
+        Task<bool> UpdateFoodAsync(T food);
+        Task<bool> DeleteFoodAsync(string id);
+        Task<T> GetFoodAsync(string id);
+        Task<IEnumerable<T>> GetFoodsAsync(bool forceRefresh = false);
     }
 }

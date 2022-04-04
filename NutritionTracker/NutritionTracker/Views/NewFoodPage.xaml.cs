@@ -10,12 +10,12 @@ namespace NutritionTracker.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Food Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
-            BindingContext = new NewItemViewModel();
+            BindingContext = new NewFoodViewModel();
         }
     }
 }

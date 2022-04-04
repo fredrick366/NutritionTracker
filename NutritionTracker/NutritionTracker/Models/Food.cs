@@ -2,7 +2,7 @@
 
 namespace NutritionTracker.Models
 {
-    public class Item
+    public class Food
     {
         public string Id { get; set; }
         public string Text { get; set; }

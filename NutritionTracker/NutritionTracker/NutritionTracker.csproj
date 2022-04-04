@@ -9,4 +9,16 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\FoodDetailPage.xaml.cs">
+      <DependentUpon>FoodDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\FoodPage.xaml.cs">
+      <DependentUpon>FoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewFoodPage.xaml.cs">
+      <DependentUpon>NewFoodPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

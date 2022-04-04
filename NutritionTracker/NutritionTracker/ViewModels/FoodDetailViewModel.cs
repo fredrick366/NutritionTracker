@@ -6,10 +6,10 @@ using Xamarin.Forms;
 
 namespace NutritionTracker.ViewModels
 {
-    [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ItemDetailViewModel : BaseViewModel
+    [QueryProperty(nameof(FoodId), nameof(FoodId))]
+    public class FoodDetailViewModel : BaseViewModel
     {
-        private string itemId;
+        private string foodId;
         private string text;
         private string description;
         public string Id { get; set; }
@@ -26,27 +26,27 @@ namespace NutritionTracker.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        public string ItemId
+        public string FoodId
         {
             get
             {
-                return itemId;
+                return foodId;
             }
             set
             {
-                itemId = value;
-                LoadItemId(value);
+                foodId = value;
+                LoadFoodId(value);
             }
         }
 
-        public async void LoadItemId(string itemId)
+        public async void LoadFoodId(string foodId)
         {
             try
             {
-                var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                var food = await DataStore.GetFoodAsync(foodId);
+                Id = food.Id;
+                Text = food.Text;
+                Description = food.Description;
             }
             catch (Exception)
             {
