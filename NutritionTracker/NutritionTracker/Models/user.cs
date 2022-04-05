@@ -1,26 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SQLite;
 
 namespace NutritionTracker.Models
 {
-    class user
+    public class user
     {
-        //public user(int Id, string Username, string Password, DateTime Birthdate, char Gender, int Weight, int Height, string MedicalConditions, int EnergyGoal)
-        //{
+        public user() { }
+        public user(string Username, string Password, DateTime Birthdate, string Gender, int Weight, int Height, string MedicalConditions, int EnergyGoal)
+        {
+            username = Username;
+            password = Password;
+            birthdate = Birthdate;
+            gender = Gender;
+            weight = Weight;
+            height = Height;
+            medicalConditions = MedicalConditions;
+            energyGoal = EnergyGoal;
+        }
 
-        //}
-
-        private int _id;
+        private int _id;                    //PK
         private string _username;
         private string _password;
         private DateTime _birthdate;
-        private char _gender;
+        private string _gender;
         private int _weight;
         private int _height;
         private string _medicalConditions;
         private int _energyGoal;
 
+        [PrimaryKey, AutoIncrement]
         public int id
         {
             get { return _id; }
@@ -45,17 +55,17 @@ namespace NutritionTracker.Models
             set { _birthdate = value; }
         }
 
-        public char gender
+        public string gender
         {
             get { return _gender; }
             set
             {
-                if(value == 'f' || value == 'm')
+                if(value.ToLower() == "female" || value.ToLower() == "male")
                 {
                     _gender = value;
                 } else
                 {
-                    _gender = 'f';
+                    _gender = "female";
                 }
             }
         }

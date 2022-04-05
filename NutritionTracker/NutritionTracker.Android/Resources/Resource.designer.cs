@@ -13571,7 +13571,6 @@ namespace NutritionTracker.Droid
 			}
 		}
 		
-		
 		public partial class Style
 		{
 			
