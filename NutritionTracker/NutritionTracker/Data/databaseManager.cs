@@ -21,26 +21,26 @@ namespace NutritionTracker.Data
             database.CreateTableAsync<user>().Wait();
         }
 
-        public Task<int> saveUserAsync(user user)
+        public int saveUserAsync(user user)
         {
             user.password = user.getPasswordHash();
             if (user.id != 0)
             {
                 // Update an existing note.
-                return database.UpdateAsync(user);
+                return database.UpdateAsync(user).Result;
             }
             else
             {
                 // Save a new note.
-                return database.InsertAsync(user);
+                return database.InsertAsync(user).Result;
             }
         }
-        public Task<user> getUserByLoginAsync(string username, string passwordHash)
+        public user getUserByLoginAsync(string username, string passwordHash)
         {
             return database.Table<user>()
                             .Where(element => element.username == username)
                             .Where(element => element.password == passwordHash)
-                            .FirstOrDefaultAsync();
+                            .FirstOrDefaultAsync().Result;
         }
     }
 }
