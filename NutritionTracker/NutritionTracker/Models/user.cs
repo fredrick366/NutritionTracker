@@ -8,6 +8,13 @@ namespace NutritionTracker.Models
     public class user
     {
         public user() { }
+
+        public user(string Username, string Password)   //This is for logging a user in, because only the username and password are entered but the hash function is needed
+        {
+            username = Username;
+            password = Password;
+        }
+
         public user(string Username, string Password, DateTime Birthdate, string Gender, int Weight, int Height, string MedicalConditions, int EnergyGoal)
         {
             username = Username;
@@ -65,7 +72,7 @@ namespace NutritionTracker.Models
                     _gender = value;
                 } else
                 {
-                    _gender = "female";
+                    _gender = "N/A";
                 }
             }
         }
