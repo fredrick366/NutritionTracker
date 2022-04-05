@@ -26,12 +26,12 @@ namespace NutritionTracker.Data
             user.password = user.getPasswordHash();
             if (user.id != 0)
             {
-                // Update an existing note.
+                // Update an existing user.
                 return database.UpdateAsync(user).Result;
             }
             else
             {
-                // Save a new note.
+                // Save a new user.
                 return database.InsertAsync(user).Result;
             }
         }
