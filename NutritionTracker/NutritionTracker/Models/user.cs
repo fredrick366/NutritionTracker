@@ -9,12 +9,6 @@ namespace NutritionTracker.Models
     {
         public user() { }
 
-        public user(string Username, string Password)   //This is for logging a user in, because only the username and password are entered but the hash function is needed
-        {
-            username = Username;
-            password = Password;
-        }
-
         public user(string Username, string Password, DateTime Birthdate, string Gender, int Weight, int Height, string MedicalConditions, int EnergyGoal)
         {
             username = Username;
@@ -110,9 +104,9 @@ namespace NutritionTracker.Models
             return RDI;
         }
 
-        public string getPasswordHash()     //Hashes the password for securing the login
+        private string hasher(string pass)     //Hashes the password for securing the login
         {
-            var bytes = System.Text.Encoding.UTF8.GetBytes(_password);
+            var bytes = System.Text.Encoding.UTF8.GetBytes(pass);
             using (var hash = System.Security.Cryptography.SHA512.Create())
             {
                 var hashedInputBytes = hash.ComputeHash(bytes);
@@ -124,6 +118,16 @@ namespace NutritionTracker.Models
                     hashedInputStringBuilder.Append(b.ToString("X2"));
                 return hashedInputStringBuilder.ToString();
             }
+        }
+
+        public string getPasswordHash(string pass)
+        {
+            return hasher(pass);
+        }
+
+        public string getPasswordHash()
+        {
+            return hasher(password);
         }
     }
 }
