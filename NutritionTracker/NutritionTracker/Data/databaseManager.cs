@@ -155,7 +155,7 @@ namespace NutritionTracker.Data
         public List<foodItem> getFoodItemByNameAsync(string name)                       //Returns list of foodItems by name
         {
             return database.Table<foodItem>()
-                            .Where(element => element.name.Contains(name))
+                            .Where(element => element.name.ToLower().Contains(name.ToLower()))
                             .ToListAsync().Result;
         }
 
