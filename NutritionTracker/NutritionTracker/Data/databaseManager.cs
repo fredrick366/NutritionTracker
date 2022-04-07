@@ -21,19 +21,34 @@ namespace NutritionTracker.Data
             database.CreateTableAsync<user>().Wait();
         }
 
+        //Note: Update and Insert functions return the number of rows
+        //      updated, if -1 is a result that is added by these functions
+        //      to indicate that there is already an entry in the table.
+
+
         //User statements
         public int saveUserAsync(user user)                                             //Creates or inserts user
         {
-            user.password = user.getPasswordHash();
-            if (user.id != 0)
+            user sameUsername = database.Table<user>()
+                            .Where(element => element.username == user.username)
+                            .FirstOrDefaultAsync().Result;
+
+            if(sameUsername == null)                                        //Checks if database doesn't contain 
             {
-                // Update an existing user.
-                return database.UpdateAsync(user).Result;
-            }
-            else
+                user.password = user.getPasswordHash();
+                if (user.id != 0)
+                {
+                    // Update an existing user.
+                    return database.UpdateAsync(user).Result;
+                }
+                else
+                {
+                    // Save a new user.
+                    return database.InsertAsync(user).Result;
+                }
+            } else
             {
-                // Save a new user.
-                return database.InsertAsync(user).Result;
+                return -1;                                                  //Returns -1 only if user exists with same username
             }
         }
 
@@ -52,15 +67,26 @@ namespace NutritionTracker.Data
         //Day statements
         public int saveDayAsync(day day)                                                //Creates or inserts day
         {
-            if (day.id != 0)
+            day sameDay =  database.Table<day>()
+                            .Where(element => element.userId == day.userId)
+                            .Where(element => element.date == day.date)
+                            .FirstOrDefaultAsync().Result;
+
+            if(sameDay == null)
             {
-                // Update an existing user.
-                return database.UpdateAsync(day).Result;
-            }
-            else
+                if (day.id != 0)
+                {
+                    // Update an existing user.
+                    return database.UpdateAsync(day).Result;
+                }
+                else
+                {
+                    // Save a new user.
+                    return database.InsertAsync(day).Result;
+                }
+            } else
             {
-                // Save a new user.
-                return database.InsertAsync(day).Result;
+                return -1;
             }
         }
 
@@ -82,7 +108,19 @@ namespace NutritionTracker.Data
         //FoodItemEntry statements
         public int saveFoodItemEntryAsync(foodItemEntry foodItemEntry)                  //Inserts new foodItemEntry
         {
-            return database.InsertAsync(foodItemEntry).Result;
+            foodItemEntry sameFoodItemEntry = database.Table<foodItemEntry>()
+                            .Where(element => element.dayId == foodItemEntry.dayId)
+                            .Where(element => element.foodItemId == foodItemEntry.foodItemId)
+                            .Where(element => element.mealTypeId == foodItemEntry.mealTypeId)
+                            .FirstOrDefaultAsync().Result;
+
+            if(sameFoodItemEntry == null)
+            {
+                return database.InsertAsync(foodItemEntry).Result;
+            } else
+            {
+                return -1;
+            }
         }
 
         public List<foodItemEntry> getFoodItemEntrysByDayAsync(day day)                 //Returns list of foodItemEntries associated with day
@@ -133,15 +171,25 @@ namespace NutritionTracker.Data
         //FoodItem statements
         public int saveFoodItemAsync(foodItem foodItem)                                 //Creates or inserts foodItem
         {
-            if (foodItem.id != 0)
+            foodItem sameFoodItem = database.Table<foodItem>()
+                            .Where(element => element.name.ToLower() == foodItem.name.ToLower())
+                            .FirstOrDefaultAsync().Result;
+
+            if(sameFoodItem == null)
             {
-                // Update an existing user.
-                return database.UpdateAsync(foodItem).Result;
-            }
-            else
+                if (foodItem.id != 0)
+                {
+                    // Update an existing user.
+                    return database.UpdateAsync(foodItem).Result;
+                }
+                else
+                {
+                    // Save a new user.
+                    return database.InsertAsync(foodItem).Result;
+                }
+            } else
             {
-                // Save a new user.
-                return database.InsertAsync(foodItem).Result;
+                return -1;
             }
         }
 
