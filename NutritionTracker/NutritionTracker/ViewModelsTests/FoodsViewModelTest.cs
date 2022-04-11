@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace NutritionTracker.ViewModels
 {
-    public class FoodsViewModel : BaseViewModel
+    public class FoodsViewModelTest : BaseViewModelTest
     {
         private Food _selectedFood;
 
@@ -17,7 +17,7 @@ namespace NutritionTracker.ViewModels
         public Command AddFoodCommand { get; }
         public Command<Food> FoodTapped { get; }
 
-        public FoodsViewModel()
+        public FoodsViewModelTest()
         {
             Title = "Browse";
             Foods = new ObservableCollection<Food>();
@@ -78,7 +78,7 @@ namespace NutritionTracker.ViewModels
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(FoodDetailPage)}?{nameof(FoodDetailViewModel.FoodId)}={food.Id}");
+            await Shell.Current.GoToAsync($"{nameof(FoodDetailPage)}?{nameof(FoodDetailViewModelTest.FoodId)}={food.Id}");
         }
     }
 }

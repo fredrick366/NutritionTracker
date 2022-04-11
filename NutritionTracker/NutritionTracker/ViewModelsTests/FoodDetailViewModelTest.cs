@@ -7,7 +7,7 @@ using Xamarin.Forms;
 namespace NutritionTracker.ViewModels
 {
     [QueryProperty(nameof(FoodId), nameof(FoodId))]
-    public class FoodDetailViewModel : BaseViewModel
+    public class FoodDetailViewModelTest : BaseViewModelTest
     {
         private string foodId;
         private string text;

@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace NutritionTracker.ViewModels
 {
-    public class DiarysViewModel : BaseViewModel
+    public class DiarysViewModelTest : BaseViewModelTest
     {
         private Diary _selectedDiary;
 
@@ -17,7 +17,7 @@ namespace NutritionTracker.ViewModels
         public Command AddDiaryCommand { get; }
         public Command<Diary> DiaryTapped { get; }
 
-        public DiarysViewModel()
+        public DiarysViewModelTest()
         {
             Title = "Browse";
             Diarys = new ObservableCollection<Diary>();
@@ -78,7 +78,7 @@ namespace NutritionTracker.ViewModels
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(DiaryDetailPage)}?{nameof(DiaryDetailViewModel.DiaryId)}={diary.Id}");
+            await Shell.Current.GoToAsync($"{nameof(DiaryDetailPage)}?{nameof(DiaryDetailViewModelTest.DiaryId)}={diary.Id}");
         }
     }
 }

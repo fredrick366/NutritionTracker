@@ -7,12 +7,12 @@ using Xamarin.Forms;
 
 namespace NutritionTracker.ViewModels
 {
-    public class NewDiaryViewModel : BaseViewModel
+    public class NewFoodViewModelTest : BaseViewModelTest
     {
         private string text;
         private string description;
 
-        public NewDiaryViewModel()
+        public NewFoodViewModelTest()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
@@ -49,14 +49,14 @@ namespace NutritionTracker.ViewModels
 
         private async void OnSave()
         {
-            Diary newDiary = new Diary()
+            Food newFood = new Food()
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
                 Description = Description
             };
 
-            await EDataStore.AddDiaryAsync(newDiary);
+            await DataStore.AddFoodAsync(newFood);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");

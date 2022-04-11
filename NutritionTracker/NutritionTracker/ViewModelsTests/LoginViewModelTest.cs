@@ -6,11 +6,11 @@ using Xamarin.Forms;
 
 namespace NutritionTracker.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModelTest : BaseViewModelTest
     {
         public Command LoginCommand { get; }
 
-        public LoginViewModel()
+        public LoginViewModelTest()
         {
             LoginCommand = new Command(OnLoginClicked);
         }

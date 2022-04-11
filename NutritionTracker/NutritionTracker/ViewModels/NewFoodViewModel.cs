@@ -1,65 +1,60 @@
-﻿using NutritionTracker.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Input;
-using Xamarin.Forms;
+using NutritionTracker.Data;
+using NutritionTracker.Models;
 
 namespace NutritionTracker.ViewModels
 {
-    public class NewFoodViewModel : BaseViewModel
+    class NewFoodViewModel
     {
-        private string text;
-        private string description;
+        public NewFoodViewModel() { }
 
-        public NewFoodViewModel()
+        private databaseManager dbm = new databaseManager(databaseSettings.defaultPath);
+
+        private int _id;
+        private string _name;
+        private int _energy;
+
+        public int id
         {
-            SaveCommand = new Command(OnSave, ValidateSave);
-            CancelCommand = new Command(OnCancel);
-            this.PropertyChanged +=
-                (_, __) => SaveCommand.ChangeCanExecute();
+            get { return _id; }
+            set { _id = value; }
         }
 
-        private bool ValidateSave()
+        public string name
         {
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description);
+            get { return _name; }
+            set { _name = value; }
         }
 
-        public string Text
+        public int energy
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get { return _energy; }
+            set { _energy = value; }
         }
 
-        public string Description
+        public int saveFoodItem()                               //Updates database with either new or existing foodItem record
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            foodItem foodItem = new foodItem(name, energy);
+            foodItem.id = id;                                   //If id is null then dbm will realise this and will create
+
+            return dbm.saveFoodItemAsync(foodItem);
         }
 
-        public Command SaveCommand { get; }
-        public Command CancelCommand { get; }
-
-        private async void OnCancel()
+        public void getFoodItem()                               //Searches for foodItem by id that may have been passed through for editing
         {
-            // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
-        }
-
-        private async void OnSave()
-        {
-            Food newFood = new Food()
+            foodItem foodItem = dbm.getFoodItemByIdAsync(_id);
+            if(foodItem == null)                                //If no id has been passed through (creating) then this should run
             {
-                Id = Guid.NewGuid().ToString(),
-                Text = Text,
-                Description = Description
-            };
-
-            await DataStore.AddFoodAsync(newFood);
-
-            // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+                name = "";
+                energy = 0;
+            } else                                              //If an id has been passed through (updating) then this should run
+            {
+                id = foodItem.id;
+                name = foodItem.name;
+                energy = foodItem.energy;
+            }
         }
     }
 }

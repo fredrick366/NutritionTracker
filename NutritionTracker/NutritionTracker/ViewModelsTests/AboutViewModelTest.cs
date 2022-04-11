@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace NutritionTracker.ViewModels
 {
-    public class AboutViewModel : BaseViewModel
+    public class AboutViewModelTest : BaseViewModelTest
     {
-        public AboutViewModel()
+        public AboutViewModelTest()
         {
             Title = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));

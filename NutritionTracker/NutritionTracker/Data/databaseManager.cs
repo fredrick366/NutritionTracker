@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text;
@@ -76,12 +77,12 @@ namespace NutritionTracker.Data
             {
                 if (day.id != 0)
                 {
-                    // Update an existing user.
+                    // Update an existing day.
                     return database.UpdateAsync(day).Result;
                 }
                 else
                 {
-                    // Save a new user.
+                    // Save a new day.
                     return database.InsertAsync(day).Result;
                 }
             } else
@@ -144,12 +145,12 @@ namespace NutritionTracker.Data
         {
             if (mealType.id != 0)
             {
-                // Update an existing user.
+                // Update an existing mealType.
                 return database.UpdateAsync(mealType).Result;
             }
             else
             {
-                // Save a new user.
+                // Save a new mealType.
                 return database.InsertAsync(mealType).Result;
             }
         }
@@ -161,7 +162,7 @@ namespace NutritionTracker.Data
                             .FirstOrDefaultAsync().Result;
         }
 
-        public List<mealType> getAllMealTypesAsync()                                    //Deletes individual mealType record
+        public List<mealType> getAllMealTypesAsync()                                    //Gets all mealTypes
         {
             return database.Table<mealType>()
                             .ToListAsync().Result;
@@ -179,18 +180,25 @@ namespace NutritionTracker.Data
             {
                 if (foodItem.id != 0)
                 {
-                    // Update an existing user.
+                    // Update an existing foodItem.
                     return database.UpdateAsync(foodItem).Result;
                 }
                 else
                 {
-                    // Save a new user.
+                    // Save a new foodItem.
                     return database.InsertAsync(foodItem).Result;
                 }
             } else
             {
                 return -1;
             }
+        }
+
+        public foodItem getFoodItemByIdAsync(int id)                                    //Returns individual foodItem by its id
+        {
+            return database.Table<foodItem>()
+                            .Where(element => element.id == id)
+                            .FirstOrDefaultAsync().Result;
         }
 
         public foodItem getFoodItemByFoodItemEntryAsync(foodItemEntry foodItemEntry)    //Returns individual foodItem associated with foodItemEntry

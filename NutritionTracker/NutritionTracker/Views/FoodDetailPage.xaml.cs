@@ -9,7 +9,7 @@ namespace NutritionTracker.Views
         public FoodDetailPage()
         {
             InitializeComponent();
-            BindingContext = new FoodDetailViewModel();
+            BindingContext = new FoodDetailViewModelTest();
         }
     }
 }
