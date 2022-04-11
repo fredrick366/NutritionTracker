@@ -6,7 +6,7 @@ using NutritionTracker.Models;
 
 namespace NutritionTracker.ViewModels
 {
-    class NewFoodViewModel
+    public class NewFoodViewModel
     {
         public NewFoodViewModel() { }
 
