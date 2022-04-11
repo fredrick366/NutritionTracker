@@ -22,11 +22,11 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10" x:DataType="model:Food">
-                        <Label Text="{Binding Text}" 
+                        <Label Text="{Binding FoodName}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListFoodTextStyle}" 
                             FontSize="16" />
-                        <Label Text="{Binding Description}" 
+                        <Label Text="{Binding Weight}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListFoodDetailTextStyle}"
                             FontSize="13" />

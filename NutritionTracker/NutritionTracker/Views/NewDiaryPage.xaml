@@ -10,14 +10,17 @@
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
             <DatePicker />
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <!--<Label Text="Text" FontSize="Medium" />-->
+            <!--<Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Description" FontSize="Medium" />-->
+            <!--<Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />-->
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
+            <!--scroll/list box with food items added for entry, search button to search food page, when click food takes to new page (food item entry page) for meal type and 
+            quanity then add to listbox button then returns to the list diary entry button and then repeat for each food item-->
+            <!--question for add new food ietm button then will add to database to be searchable-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

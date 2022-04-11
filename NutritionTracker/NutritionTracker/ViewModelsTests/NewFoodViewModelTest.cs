@@ -26,13 +26,13 @@ namespace NutritionTracker.ViewModels
                 && !String.IsNullOrWhiteSpace(description);
         }
 
-        public string Text
+        public string FoodNames
         {
             get => text;
             set => SetProperty(ref text, value);
         }
 
-        public string Description
+        public string Weights
         {
             get => description;
             set => SetProperty(ref description, value);
@@ -52,8 +52,8 @@ namespace NutritionTracker.ViewModels
             Food newFood = new Food()
             {
                 Id = Guid.NewGuid().ToString(),
-                Text = Text,
-                Description = Description
+                FoodName = FoodNames,
+                Weight = Weights
             };
 
             await DataStore.AddFoodAsync(newFood);

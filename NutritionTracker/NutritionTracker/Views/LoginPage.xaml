@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="NutritionTracker.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True"
+             Title="LogIn"
+             >
     <StackLayout BackgroundColor="#e6e6e6">
         <Grid>
             <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
@@ -15,52 +17,37 @@
             </StackLayout>
             <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
                 <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
-
                     <StackLayout>
-
-
                         <StackLayout Margin="10">
                             <Label Text="LOGIN" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
                         </StackLayout>
 
                         <StackLayout Padding="0" Margin="15,10">
-
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="#96d1ff" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-
-                                    </Frame>
+                                    <!-- add label/placeholder for username and password field-->
+                                    <Frame BackgroundColor="#2196F3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5"/>
                                 </StackLayout>
                             </Frame>
 
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="#96d1ff" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-
-                                    </Frame>
-
+                                    <Frame BackgroundColor="#2196F3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5"/>
                                 </StackLayout>
                             </Frame>
 
                             <StackLayout  Orientation="Horizontal">
                                 <CheckBox IsChecked="False" Color="#96d1ff" />
                                 <Label Text="Remember me" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-
                                 <Label Text="Forgot Password" TextColor="#96d1ff" FontAttributes="Bold" HorizontalOptions="EndAndExpand" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-
-
                             </StackLayout>
 
-                            <Button Text="LOGIN" BackgroundColor="#96d1ff" TextColor="White" CornerRadius="30" Command="{Binding LoginCommand}"/>
+                            <Button Text="LOGIN" BackgroundColor="#2196F3" TextColor="White" CornerRadius="30" Command="{Binding LoginCommand}"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                                 <Label Text="Register" TextColor="Black" FontAttributes="Bold" FontSize="Small"/>
                             </StackLayout>
-
                         </StackLayout>
-
-
                     </StackLayout>
-
                 </Frame>
             </StackLayout>
         </Grid>

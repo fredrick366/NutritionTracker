@@ -19,7 +19,7 @@ namespace NutritionTracker.ViewModels
 
         public DiarysViewModelTest()
         {
-            Title = "Browsed";
+            Title = "Browse Diary Entries";
             Diarys = new ObservableCollection<Diary>();
             LoadDiarysCommand = new Command(async () => await ExecuteLoadDiarysCommand());
 

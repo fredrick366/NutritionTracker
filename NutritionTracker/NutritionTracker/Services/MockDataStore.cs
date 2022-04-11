@@ -15,23 +15,24 @@ namespace NutritionTracker.Services
         {
             foods = new List<Food>()
             {
-                new Food { Id = Guid.NewGuid().ToString(), Text = "First food", Description="This is an food description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Second food", Description="This is an food description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Third food", Description="This is an food description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Fourth food", Description="This is an food description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Fifth food", Description="This is an food description." },
-                new Food { Id = Guid.NewGuid().ToString(), Text = "Sixth food", Description="This is an food description." }
+                new Food { Id = Guid.NewGuid().ToString(), FoodName = "First food", Weight="This is a number for weight per 100g." },
+                new Food { Id = Guid.NewGuid().ToString(), FoodName = "Second food", Weight="This is a number for weight per 100g." },
+                new Food { Id = Guid.NewGuid().ToString(), FoodName = "Third food", Weight="This is a number for weight per 100g." },
+                new Food { Id = Guid.NewGuid().ToString(), FoodName = "Fourth food", Weight="This is a number for weight per 100g." },
+                new Food { Id = Guid.NewGuid().ToString(), FoodName = "Fifth food", Weight="This is a number for weight per 100g." },
+                new Food { Id = Guid.NewGuid().ToString(), FoodName = "Sixth food", Weight="This is a number for weight per 100g." }
                 //have new entries saving to database - or ^ this also saving- so can have show up on refresh
+                //have food items from testData appear in the ^^ for the fooddetail
             };
 
             diarys = new List<Diary>()
             {
-                new Diary { Id = Guid.NewGuid().ToString(), Text = "First entry", Description="This is an diary description." },
-                new Diary { Id = Guid.NewGuid().ToString(), Text = "Second entry", Description="This is an diary description." },
-                new Diary { Id = Guid.NewGuid().ToString(), Text = "Third entry", Description="This is an diary description." },
-                new Diary { Id = Guid.NewGuid().ToString(), Text = "Fourth entry", Description="This is an diary description." },
-                new Diary { Id = Guid.NewGuid().ToString(), Text = "Fifth entry", Description="This is an diary description." },
-                new Diary { Id = Guid.NewGuid().ToString(), Text = "Sixth entry", Description="This is an diary description." }
+                new Diary { Id = Guid.NewGuid().ToString(), Text = "First Day", Description="This is an diary description." },
+                new Diary { Id = Guid.NewGuid().ToString(), Text = "Second Day", Description="This is an diary description." },
+                new Diary { Id = Guid.NewGuid().ToString(), Text = "Third Day", Description="This is an diary description." },
+                new Diary { Id = Guid.NewGuid().ToString(), Text = "Fourth Day", Description="This is an diary description." },
+                new Diary { Id = Guid.NewGuid().ToString(), Text = "Fifth Day", Description="This is an diary description." },
+                new Diary { Id = Guid.NewGuid().ToString(), Text = "Sixth Day", Description="This is an diary description." }
             };
             //test = date in string format from date picker
         }

@@ -14,13 +14,13 @@ namespace NutritionTracker.ViewModels
         private string description;
         public string Id { get; set; }
 
-        public string Text
+        public string FoodName
         {
             get => text;
             set => SetProperty(ref text, value);
         }
 
-        public string Description
+        public string Weight
         {
             get => description;
             set => SetProperty(ref description, value);
@@ -45,8 +45,8 @@ namespace NutritionTracker.ViewModels
             {
                 var food = await DataStore.GetFoodAsync(foodId);
                 Id = food.Id;
-                Text = food.Text;
-                Description = food.Description;
+                FoodName = food.FoodName;
+                Weight = food.Weight;
             }
             catch (Exception)
             {

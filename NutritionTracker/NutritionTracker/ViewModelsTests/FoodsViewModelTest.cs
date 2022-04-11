@@ -19,7 +19,7 @@ namespace NutritionTracker.ViewModels
 
         public FoodsViewModelTest()
         {
-            Title = "Browse";
+            Title = "Add new Food";
             Foods = new ObservableCollection<Food>();
             LoadFoodsCommand = new Command(async () => await ExecuteLoadFoodsCommand());
 
