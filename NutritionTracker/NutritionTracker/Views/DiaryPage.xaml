@@ -4,7 +4,7 @@
              x:Class="NutritionTracker.Views.DiarysPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:NutritionTracker.ViewModels"  
-             xmlns:model="clr-namespace:NutritionTracker.Models" x:DataType="local:DiarysViewModel"
+             xmlns:model="clr-namespace:NutritionTracker.Models"
              x:Name="BrowseDiarysPage">
 
     <ContentPage.ToolbarItems>
@@ -14,7 +14,7 @@
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-    <RefreshView x:DataType="local:DiarysViewModel" Command="{Binding LoadDiarysCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView x:DataType="local:DiarysViewModelTest" Command="{Binding LoadDiarysCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="DiarysListView"
                 ItemsSource="{Binding Diarys}"
                 SelectionMode="None">
@@ -32,7 +32,7 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:DiarysViewModel}}, Path=DiaryTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:DiarysViewModelTest}}, Path=DiaryTapped}"		
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
