@@ -6,9 +6,63 @@
              mc:Ignorable="d"
              x:Class="NutritionTracker.Views.LoginPage"
              Shell.NavBarIsVisible="False">
-    <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout BackgroundColor="#e6e6e6">
+        <Grid>
+            <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                <Frame HeightRequest="150" BackgroundColor="#96d1ff" Padding="0" Margin="0">
+
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
+                <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
+
+                    <StackLayout>
+
+
+                        <StackLayout Margin="10">
+                            <Label Text="LOGIN" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                        </StackLayout>
+
+                        <StackLayout Padding="0" Margin="15,10">
+
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="#96d1ff" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="#96d1ff" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+
+                                    </Frame>
+
+                                </StackLayout>
+                            </Frame>
+
+                            <StackLayout  Orientation="Horizontal">
+                                <CheckBox IsChecked="False" Color="#96d1ff" />
+                                <Label Text="Remember me" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+
+                                <Label Text="Forgot Password" TextColor="#96d1ff" FontAttributes="Bold" HorizontalOptions="EndAndExpand" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+
+
+                            </StackLayout>
+
+                            <Button Text="LOGIN" BackgroundColor="#96d1ff" TextColor="White" CornerRadius="30" Command="{Binding LoginCommand}"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Label Text="Register" TextColor="Black" FontAttributes="Bold" FontSize="Small"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+                    </StackLayout>
+
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
 </ContentPage>
