@@ -4,7 +4,8 @@
              x:Class="NutritionTracker.Views.FoodsPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:NutritionTracker.ViewModels"  
-             xmlns:model="clr-namespace:NutritionTracker.Models"  
+             xmlns:model="clr-namespace:NutritionTracker.Models" 
+             xmlns:viewmodels="clr-namespace:NutritionTracker.ViewModels" x:DataType="viewmodels:FoodsViewModel"
              x:Name="BrowseFoodsPage">
 
     <ContentPage.ToolbarItems>

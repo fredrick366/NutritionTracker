@@ -4,7 +4,7 @@
              x:Class="NutritionTracker.Views.DiarysPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:NutritionTracker.ViewModels"  
-             xmlns:model="clr-namespace:NutritionTracker.Models"  
+             xmlns:model="clr-namespace:NutritionTracker.Models" x:DataType="local:DiarysViewModel"
              x:Name="BrowseDiarysPage">
 
     <ContentPage.ToolbarItems>
