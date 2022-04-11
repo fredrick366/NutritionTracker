@@ -26,7 +26,7 @@ namespace NutritionTracker.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.OnAppearing();
+            _viewModels.OnAppearing();
         }
     }
 }

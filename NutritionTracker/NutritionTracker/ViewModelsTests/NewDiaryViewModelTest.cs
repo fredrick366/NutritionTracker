@@ -56,7 +56,7 @@ namespace NutritionTracker.ViewModels
                 Description = Description
             };
 
-            await EDataStore.AddDiaryAsync(newDiary);
+            await DataStore.AddDiaryAsync(newDiary);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");

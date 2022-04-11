@@ -19,7 +19,7 @@ namespace NutritionTracker.ViewModels
 
         public DiarysViewModelTest()
         {
-            Title = "Browse";
+            Title = "Browsed";
             Diarys = new ObservableCollection<Diary>();
             LoadDiarysCommand = new Command(async () => await ExecuteLoadDiarysCommand());
 
@@ -35,7 +35,7 @@ namespace NutritionTracker.ViewModels
             try
             {
                 Diarys.Clear();
-                var diarys = await EDataStore.GetDiarysAsync(true);
+                var diarys = await DataStore.GetDiarysAsync(true);
                 foreach (var diary in diarys)
                 {
                     Diarys.Add(diary);
@@ -43,6 +43,7 @@ namespace NutritionTracker.ViewModels
             }
             catch (Exception ex)
             {
+                Console.WriteLine();
                 Debug.WriteLine(ex);
             }
             finally

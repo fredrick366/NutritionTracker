@@ -43,7 +43,7 @@ namespace NutritionTracker.ViewModels
         {
             try
             {
-                var diary = await EDataStore.GetDiaryAsync(diaryId);
+                var diary = await DataStore.GetDiaryAsync(diaryId);
                 Id = diary.Id;
                 Text = diary.Text;
                 Description = diary.Description;
