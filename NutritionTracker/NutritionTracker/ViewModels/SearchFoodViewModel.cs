@@ -10,25 +10,17 @@ namespace NutritionTracker.ViewModels
     {
         public SearchFoodViewModel() { }
 
-        private databaseManager dbm = new databaseManager(databaseSettings.defaultPath);
+        private databaseManager dbm = App.Database;
 
         private string _searchString;
-        private List<foodItem> _searchResults;
 
-        public string searchString
+        public string searchString          //UI field
         {
             get { return _searchString; }
             set { _searchString = value; }
         }
 
-        public List<foodItem> searchResults
-        {
-            get { return _searchResults; }
-            set { _searchResults = value; }
-        }
-
-
-        public List<foodItem> getSearchResults()                    //This could either be triggered by a keystroke in the search bar or by clicking a search button
+        public List<foodItem> getSearchResults()                        //This could either be triggered by a keystroke in the search bar or by clicking a search button
         {
             return dbm.getFoodItemByNameAsync(searchString);
         }

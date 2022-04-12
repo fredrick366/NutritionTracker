@@ -3,57 +3,57 @@ using System.Collections.Generic;
 using System.Text;
 using NutritionTracker.Data;
 using NutritionTracker.Models;
+using NutritionTracker.Services;
 
 namespace NutritionTracker.ViewModels
 {
     public class NewFoodViewModel
     {
-        public NewFoodViewModel() { }
+        public NewFoodViewModel()
+        {
+            _foodItem = session.currentFoodItem;
 
-        private databaseManager dbm = new databaseManager(databaseSettings.defaultPath);
+            if (_foodItem == null)          //If no foodItem has been passed through (creating) then this should run
+            {
+                name = "";
+                energy = 0;
+            }
+            else                            //If an foodItem has been passed through (updating) then this should run
+            {
+                name = _foodItem.name;
+                energy = _foodItem.energy;
+            }
+        }
 
-        private int _id;
+        private databaseManager dbm = App.Database;
+        private SessionStorage session = App.session;
+
+        private foodItem _foodItem;
         private string _name;
         private int _energy;
 
-        public int id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string name
+        public string name                  //UI field
         {
             get { return _name; }
             set { _name = value; }
         }
 
-        public int energy
+        public int energy                   //UI field
         {
             get { return _energy; }
             set { _energy = value; }
         }
 
-        public int saveFoodItem()                               //Updates database with either new or existing foodItem record
+        public int saveFoodItem()           //Updates database with either new or existing foodItem record
         {
-            foodItem foodItem = new foodItem(name, energy);
-            foodItem.id = id;                                   //If id is null then dbm will realise this and will create
-
-            return dbm.saveFoodItemAsync(foodItem);
-        }
-
-        public void getFoodItem()                               //Searches for foodItem by id that may have been passed through for editing
-        {
-            foodItem foodItem = dbm.getFoodItemByIdAsync(_id);
-            if(foodItem == null)                                //If no id has been passed through (creating) then this should run
+            if(_foodItem == null)
             {
-                name = "";
-                energy = 0;
-            } else                                              //If an id has been passed through (updating) then this should run
+                return dbm.saveFoodItemAsync(new foodItem(name, energy));
+            } else
             {
-                id = foodItem.id;
-                name = foodItem.name;
-                energy = foodItem.energy;
+                _foodItem.name = name;
+                _foodItem.energy = energy;
+                return dbm.saveFoodItemAsync(_foodItem);
             }
         }
     }
