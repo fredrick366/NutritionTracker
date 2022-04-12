@@ -201,7 +201,7 @@ namespace NutritionTracker.Data
                             .FirstOrDefaultAsync().Result;
         }
 
-        public foodItem getFoodItemByFoodItemEntryAsync(foodItemEntry foodItemEntry)    //Returns individual foodItem associated with foodItemEntry
+        public foodItem getFoodItemByFoodItemEntrysAsync(foodItemEntry foodItemEntry)    //Returns individual foodItem associated with foodItemEntry
         {
             return database.Table<foodItem>()
                             .Where(element => element.id == foodItemEntry.foodItemId)
@@ -213,6 +213,20 @@ namespace NutritionTracker.Data
             return database.Table<foodItem>()
                             .Where(element => element.name.ToLower().Contains(name.ToLower()))
                             .ToListAsync().Result;
+        }
+
+        public List<foodItem> getFoodItemsByDayAsync(day day)                           //Returns list of foodItems associated with day via foodItemEntries
+        {
+            List<foodItemEntry> foodItemEntries = getFoodItemEntrysByDayAsync(day);
+
+            List<foodItem> foodItems = new List<foodItem>();
+
+            foreach(var foodItemEntry in foodItemEntries)
+            {
+                foodItems.Add(getFoodItemByIdAsync(foodItemEntry.foodItemId));
+            }
+
+            return foodItems;
         }
 
         public int deleteFoodItemAsync(foodItem foodItem)                               //Deletes individual foodItem record
