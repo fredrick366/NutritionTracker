@@ -18,11 +18,13 @@ namespace NutritionTracker
             {
                 if (database == null)
                 {
-                    database = new databaseManager(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3"));
+                    database = new databaseManager(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Nutrition.db3"));
                 }
                 return database;
             }
         }
+
+        public static SessionStorage session;
 
         public App()
         {
