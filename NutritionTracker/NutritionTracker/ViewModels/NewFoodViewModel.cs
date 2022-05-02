@@ -18,7 +18,7 @@ namespace NutritionTracker.ViewModels
                 name = "";
                 energy = 0;
             }
-            else                            //If an foodItem has been passed through (updating) then this should run
+            else                            //If a foodItem has been passed through (updating) then this should run
             {
                 name = _foodItem.name;
                 energy = _foodItem.energy;

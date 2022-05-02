@@ -20,11 +20,23 @@ namespace NutritionTracker.ViewModels
 
         private user _user;
         private List<day> _days;
+        private day _selectedDay;
 
         public List<day> days               //Displays as list
         {
             get { return _days; }
             set { _days = value; }
+        }
+
+        public day selectedDay              //Selected day
+        {
+            get { return _selectedDay; }
+            set { _selectedDay = value; }
+        }
+
+        public void updateSession()         //Updates session variables
+        {
+            session.currentDay = selectedDay;
         }
 
         public int deleteDay(day day)       //Deletes selected day
