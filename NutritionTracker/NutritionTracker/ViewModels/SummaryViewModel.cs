@@ -26,6 +26,8 @@ namespace NutritionTracker.ViewModels
 
                 summaries.Add(new summary(dailyIntake, d));
             }
+
+            recommendedDailyIntake = _user.getRDI();
         }
 
         private databaseManager dbm = App.Database;

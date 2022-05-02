@@ -95,11 +95,39 @@ namespace NutritionTracker.Models
             set { _energyGoal = value; }
         }
 
+        public int getAge()
+        {
+            int age = 0;
+            bool found = false;
+            
+            while(!found)
+            {
+                if(birthdate.AddYears(age + 1) > DateTime.Today)
+                {
+                    found = true;
+                } else
+                {
+                    age++;
+                }
+            }
+
+            return age;
+        }
+
         public int getRDI()                 //Calculates the Recommended Daily Intake (RDI) based on the users details
         {
             int RDI;
-            //Some calculations
-            RDI = 10;   //Just for testing purposes
+            int age = getAge();
+            if(gender == "male")
+            {
+                RDI = (10 * weight) + (25 * height / 4) - (5 * age) + 5;
+            } else if(gender == "female")
+            {
+                RDI = (10 * weight) + (25 * height / 4) - (5 * age) - 161;
+            } else
+            {
+                RDI = 0;   //If gender is invalid
+            }
 
             return RDI;
         }
