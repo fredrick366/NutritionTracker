@@ -33,18 +33,18 @@ namespace NutritionTracker.ViewModels
         private databaseManager dbm = App.Database;
         private SessionStorage session = App.session;
 
-
+        
         private user _user;
         private int _recommendedDailyIntake;
         private List<summary> _summaries;
 
-        public int recommendedDailyIntake
+        public int recommendedDailyIntake   //RDI for user based on their details
         {
             get { return _recommendedDailyIntake; }
             set { _recommendedDailyIntake = value; }
         }
 
-        public List<summary> summaries
+        public List<summary> summaries      //Summary of total intakes against the day they were consumed
         {
             get { return _summaries; }
             set { _summaries = value; }
