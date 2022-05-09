@@ -15,6 +15,7 @@ namespace NutritionTracker
             Routing.RegisterRoute(nameof(NewFoodPage), typeof(NewFoodPage));
             Routing.RegisterRoute(nameof(DiaryDetailPage), typeof(DiaryDetailPage));
             Routing.RegisterRoute(nameof(NewDiaryPage), typeof(NewDiaryPage));
+            Routing.RegisterRoute(nameof(FoodItemEntriesPage), typeof(FoodItemEntriesPage));
         }
 
     }

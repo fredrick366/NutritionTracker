@@ -20,15 +20,15 @@ namespace NutritionTracker.ViewModels
 
             LoadDiarysCommand = new Command(ExecuteLoadDiarysCommand());
 
-            DiaryTapped = new Command<day>(OnDiarySelected);
+            DayTapped = new Command<day>(OnDaySelected);
 
-            AddDiaryCommand = new Command(OnAddDiary);
+            AddDayCommand = new Command(OnAddDay);
 
         }
 
         public Command LoadDiarysCommand { get; }
-        public Command<day> DiaryTapped { get; }
-        public Command AddDiaryCommand { get; }
+        public Command<day> DayTapped { get; }
+        public Command AddDayCommand { get; }
 
         private user _user;
         private ObservableCollection<day> _days;
@@ -80,21 +80,46 @@ namespace NutritionTracker.ViewModels
                     IsBusy = false;
                 }
             };
+            //return action;
+
+            IsBusy = true;      //Not running
+            try
+            {
+                if (session.currentUser != null)
+                {
+                    _user = session.currentUser;
+                    days = new ObservableCollection<day>(dbm.getDaysByUserAsync(_user));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
             return action;
         }
 
-        async void OnDiarySelected(day day)
+        async void OnDaySelected(day day)
         {
             if (day == null)
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(DiaryDetailPage)}?{nameof(DiaryDetailViewModelTest.DiaryId)}={day.id}");
+            //await Shell.Current.GoToAsync($"{nameof(FoodItemEntriesPage)}?{nameof(FoodItemEntriesViewModel.DiaryId)}={day.id}");
+            selectedDay = day;
+            updateSession();
+            await Shell.Current.GoToAsync(nameof(FoodItemEntriesPage));
         }
 
-        private async void OnAddDiary(object obj)
+        private async void OnAddDay(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewDiaryPage));
+            //await Shell.Current.GoToAsync(nameof(NewDiaryPage));
+            await Shell.Current.GoToAsync(nameof(FoodItemEntriesPage));
         }
     }
 }

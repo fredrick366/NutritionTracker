@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionTracker.Views.FoodItemEntriesPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="{Binding title}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Name="FoodItemEntriesPage">
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="date:" FontSize="medium" />
+            <Label Text="{Binding text}" FontSize="small"/>
+            <Label Text="diary entry:" FontSize="medium" />
+            <Label Text="{Binding text}" FontSize="small"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

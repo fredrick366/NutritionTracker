@@ -8,7 +8,7 @@
              x:Name="BrowseDiarysPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddDiaryCommand}" />
+        <ToolbarItem Text="Add" Command="{Binding AddDayCommand}" />
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -32,7 +32,7 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:DaysViewModel}}, Path=DiaryTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:DaysViewModel}}, Path=DayTapped}"		
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>

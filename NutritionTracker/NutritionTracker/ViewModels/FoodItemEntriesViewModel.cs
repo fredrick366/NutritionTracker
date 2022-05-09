@@ -11,6 +11,8 @@ namespace NutritionTracker.ViewModels
     {
         public FoodItemEntriesViewModel()
         {
+            title = "Browse Diary Entries";
+
             _day = session.currentDay;
             _user = session.currentUser;
 
