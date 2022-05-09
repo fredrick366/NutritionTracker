@@ -7,7 +7,7 @@ using NutritionTracker.Services;
 
 namespace NutritionTracker.ViewModels
 {
-    class FoodItemEntrySettingsViewModel
+    class FoodItemEntrySettingsViewModel : BaseViewModel
     {
         public FoodItemEntrySettingsViewModel()
         {
@@ -15,9 +15,6 @@ namespace NutritionTracker.ViewModels
             _foodItem = session.currentFoodItem;
             mealTypes = dbm.getAllMealTypesAsync();
         }
-
-        private databaseManager dbm = App.Database;
-        private SessionStorage session = App.session;
 
         private day _day;                   //Day this foodItemEntry is associated with
         private foodItem _foodItem;         //FoodItem being entered

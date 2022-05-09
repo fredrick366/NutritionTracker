@@ -14,19 +14,19 @@ namespace NutritionTracker.Views
 {
     public partial class DiarysPage : ContentPage
     {
-        DiarysViewModelTest _viewModel;
+        DaysViewModel _viewModel;
 
         public DiarysPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new DiarysViewModelTest();
+            BindingContext = _viewModel = new DaysViewModel();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.OnAppearing();
+            //_viewModel.OnAppearing();
         }
     }
 }

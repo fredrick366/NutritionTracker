@@ -35,5 +35,10 @@ namespace NutritionTracker.Models
             get { return _date; }
             set { _date = value; }
         }
+
+        public string text                  //Date that is displayed, ie the title of the day in the day list
+        {
+            get { return _date.ToString("D"); }
+        }
     }
 }

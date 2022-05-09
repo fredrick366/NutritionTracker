@@ -7,12 +7,9 @@ using NutritionTracker.Services;
 
 namespace NutritionTracker.ViewModels
 {
-    public class SearchFoodViewModel
+    public class SearchFoodViewModel : BaseViewModel
     {
         public SearchFoodViewModel() { }
-
-        private databaseManager dbm = App.Database;
-        private SessionStorage session = App.session;
 
         private string _searchString;
         private foodItem _selectedFoodItem;

@@ -110,9 +110,7 @@ namespace NutritionTracker.Data
         public int saveFoodItemEntryAsync(foodItemEntry foodItemEntry)                  //Inserts new foodItemEntry
         {
             foodItemEntry sameFoodItemEntry = database.Table<foodItemEntry>()
-                            .Where(element => element.dayId == foodItemEntry.dayId)
-                            .Where(element => element.foodItemId == foodItemEntry.foodItemId)
-                            .Where(element => element.mealTypeId == foodItemEntry.mealTypeId)
+                            .Where(element => element.id == foodItemEntry.id)
                             .FirstOrDefaultAsync().Result;
 
             if(sameFoodItemEntry == null)

@@ -7,7 +7,7 @@ using NutritionTracker.Services;
 
 namespace NutritionTracker.ViewModels
 {
-    public class NewFoodViewModel
+    public class NewFoodViewModel : BaseViewModel
     {
         public NewFoodViewModel()
         {
@@ -24,9 +24,6 @@ namespace NutritionTracker.ViewModels
                 energy = _foodItem.energy;
             }
         }
-
-        private databaseManager dbm = App.Database;
-        private SessionStorage session = App.session;
 
         private foodItem _foodItem;
         private string _name;

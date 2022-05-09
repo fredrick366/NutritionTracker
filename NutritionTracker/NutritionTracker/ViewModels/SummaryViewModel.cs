@@ -7,7 +7,7 @@ using NutritionTracker.Services;
 
 namespace NutritionTracker.ViewModels
 {
-    class SummaryViewModel
+    public class SummaryViewModel : BaseViewModel
     {
         public SummaryViewModel()
         {
@@ -29,9 +29,6 @@ namespace NutritionTracker.ViewModels
 
             recommendedDailyIntake = _user.getRDI();
         }
-
-        private databaseManager dbm = App.Database;
-        private SessionStorage session = App.session;
 
         
         private user _user;

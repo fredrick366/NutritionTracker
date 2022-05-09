@@ -24,7 +24,19 @@ namespace NutritionTracker
             }
         }
 
-        public static SessionStorage session;
+        static SessionStorage session;
+
+        public static SessionStorage Session
+        {
+            get
+            {
+                if (session == null)
+                {
+                    session = new SessionStorage();
+                }
+                return session;
+            }
+        }
 
         public App()
         {

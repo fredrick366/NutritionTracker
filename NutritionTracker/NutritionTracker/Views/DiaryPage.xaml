@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutritionTracker.Views.DiarysPage"
-             Title="{Binding Title}"
+             Title="{Binding title}"
              xmlns:local="clr-namespace:NutritionTracker.ViewModels"  
              xmlns:model="clr-namespace:NutritionTracker.Models"
              x:Name="BrowseDiarysPage">
@@ -14,25 +14,25 @@
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-    <RefreshView x:DataType="local:DiarysViewModelTest" Command="{Binding LoadDiarysCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView x:DataType="local:DaysViewModel" Command="{Binding LoadDiarysCommand}"  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="DiarysListView"
-                ItemsSource="{Binding Diarys}"
+                ItemsSource="{Binding days}"
                 SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Diary">
-                        <Label Text="{Binding Text}" 
+                    <StackLayout Padding="10" x:DataType="model:day">
+                        <Label Text="{Binding text}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListDiaryTextStyle}" 
                             FontSize="16" />
-                        <Label Text="{Binding Description}" 
+                        <!--<Label Text="{Binding Description}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListDiaryDetailTextStyle}"
-                            FontSize="13" />
+                            FontSize="13" />-->
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:DiarysViewModelTest}}, Path=DiaryTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:DaysViewModel}}, Path=DiaryTapped}"		
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
