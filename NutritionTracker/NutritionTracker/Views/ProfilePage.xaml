@@ -3,30 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutritionTracker.Views.ProfilePage"
              Title="Profile">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddProfileCommand}" />
+    </ContentPage.ToolbarItems>
+
+
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#e6e6e6">
-            <Grid><!--link to th elogin page-->
-                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
-                    <Frame HeightRequest="150" BackgroundColor="#96d1ff" Padding="0" Margin="0"/>
-                </StackLayout>
-                <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
-                    <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
-                        <StackLayout>
-                            <StackLayout Margin="10">
-                                <Label Text="Profile" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+        <ScrollView Orientation="Vertical" HorizontalOptions="Center">
+            <StackLayout BackgroundColor="#e6e6e6">
+                <Grid>
+                    <!--link to the login page-->
+                    <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                        <Frame HeightRequest="150" BackgroundColor="#96d1ff" Padding="0" Margin="0"/>
+                    </StackLayout>
+                    <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
+                        <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
+                            <StackLayout>
+                                <StackLayout Margin="10">
+                                    <Label Text="Profile" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                </StackLayout>
+                                <Label Text="D.O.B" FontSize="Medium" />
+                                <Entry Text="{Binding dob, Mode=TwoWay}" FontSize="Medium" />
+                                <Label Text="Weight" FontSize="Medium" />
+                                <Entry Text="{Binding weight, Mode=TwoWay}" FontSize="Medium" />
+                                <Label Text="Height" FontSize="Medium" />
+                                <Entry Text="{Binding height, Mode=TwoWay}" FontSize="Medium" />
+                                <Label Text="Existing Medical Conditions" FontSize="Medium" />
+                                <Entry Text="{Binding medical, Mode=TwoWay}" FontSize="Medium" />
+                                <Label Text="Daily Energy Goal" FontSize="Medium" />
+                                <Entry Text="{Binding dailygoal, Mode=TwoWay}" FontSize="Medium" />
+                                <Label Text="Username" FontSize="Medium" />
+                                <Entry Text="{Binding username, Mode=TwoWay}" FontSize="Medium" />
+                                <Label Text="Password" FontSize="Medium" />
+                                <Entry Text="{Binding password, Mode=TwoWay}" FontSize="Medium" />
+                                <Label Text="Weight" FontSize="Medium" />
+                                <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                                    <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                                </StackLayout>
                             </StackLayout>
-                            <Label Text="Food Name" FontSize="Medium" />
-                            <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
-                            <Label Text="Weight" FontSize="Medium" />
-                            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
-                            <StackLayout Orientation="Horizontal">
-                                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
-                                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-            </Grid>
-        </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
