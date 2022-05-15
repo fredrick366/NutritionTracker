@@ -26,13 +26,17 @@
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
                                     <!-- add label/placeholder for username and password field-->
-                                    <Frame BackgroundColor="#2196F3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5"/>
+                                    <Frame BackgroundColor="#2196F3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Entry x:Name="Username" Text="{Binding Username}" Placeholder="Email" PlaceholderColor="White" HeightRequest="40" Keyboard="Username" TextColor="White"/>
+                                    </Frame>
                                 </StackLayout>
                             </Frame>
 
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="#2196F3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5"/>
+                                    <Frame BackgroundColor="#2196F3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Senha" PlaceholderColor="White" HeightRequest="40" IsPassword="True" TextColor="White"/>
+                                    </Frame>
                                 </StackLayout>
                             </Frame>
 
@@ -44,7 +48,17 @@
 
                             <Button Text="LOGIN" BackgroundColor="#2196F3" TextColor="White" CornerRadius="30" Command="{Binding LoginCommand}"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="Register" TextColor="Black" FontAttributes="Bold" FontSize="Small"/>
+                                <Label HorizontalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Don't have an account?" TextColor="DarkGray"/>
+                                            <Span Text="Register here" TextColor="DarkGray" FontAttributes="Bold" TextDecorations="Underline"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer/>
+                                    </Label.GestureRecognizers>
+                                </Label>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
