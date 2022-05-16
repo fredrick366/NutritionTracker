@@ -10,10 +10,10 @@
     
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="date:" FontSize="medium" />
-            <Label Text="{Binding text}" FontSize="small"/>
-            <Label Text="diary entry:" FontSize="medium" />
-            <Label Text="{Binding text}" FontSize="small"/>
+            <Label Text="date:" FontSize="Medium" />
+            <Label Text="{Binding text}" FontSize="Small"/>
+            <Label Text="diary entry:" FontSize="Medium" />
+            <Label Text="{Binding text}" FontSize="Small"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
