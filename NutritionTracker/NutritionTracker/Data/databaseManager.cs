@@ -124,9 +124,16 @@ namespace NutritionTracker.Data
 
         public List<foodItemEntry> getFoodItemEntrysByDayAsync(day day)                 //Returns list of foodItemEntries associated with day
         {
-            return database.Table<foodItemEntry>()
+            if(day != null)
+            {
+                return database.Table<foodItemEntry>()
                             .Where(element => element.dayId == day.id)
                             .ToListAsync().Result;
+            }
+            else
+            {
+                return new List<foodItemEntry>();
+            }
         }
 
         public int deleteFoodItemEntryAsync(foodItemEntry foodItemEntry)                //Deletes individual foodItemEntry record

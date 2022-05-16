@@ -2,18 +2,51 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutritionTracker.Views.FoodItemEntriesPage"
-             Shell.PresentationMode="ModalAnimated"
              Title="{Binding title}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             x:Name="FoodItemEntriesPage">
+             ios:Page.UseSafeArea="true"  
+             xmlns:local="clr-namespace:NutritionTracker.ViewModels"  
+             xmlns:model="clr-namespace:NutritionTracker.Models"
+             x:Name="foodItemEntriesPage">
     
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="date:" FontSize="Medium" />
-            <Label Text="{Binding text}" FontSize="Small"/>
-            <Label Text="diary entry:" FontSize="Medium" />
-            <Label Text="{Binding text}" FontSize="Small"/>
+            <Label Text="{Binding day.text}" FontSize="Small"/>
+            <Label Text="food items:" FontSize="Medium" />
+            
+            <RefreshView x:DataType="local:FoodItemEntriesViewModel" Command="{Binding LoadFoodItemsCommand}"  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="FoodItemsListView"
+                ItemsSource="{Binding foodItems}"
+                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" x:DataType="model:foodItem">
+                                <Label Text="{Binding name}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListDiaryTextStyle}" 
+                            FontSize="16" />
+                                <!--<Label Text="{Binding Description}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListDiaryDetailTextStyle}"
+                            FontSize="13" />-->
+                                <!--<StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:DaysViewModel}}, Path=DayTapped}"		
+                                        CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>-->
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
