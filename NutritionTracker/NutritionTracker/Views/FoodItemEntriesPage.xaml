@@ -42,6 +42,9 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </RefreshView>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add" Command="{Binding AddCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
             
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>

@@ -28,18 +28,16 @@ namespace NutritionTracker.ViewModels
                 _date = _day.date;
             }
 
-            foodItemsRaw = dbm.getFoodItemsByDayAsync(_day);
-            foodItems = new ObservableCollection<foodItem>(foodItemsRaw);
-
+            AddCommand = new Command(AddFoodItem);
+            LoadFoodItemsCommand = new Command(LoadFoodItems());
             CancelCommand = new Command(cancelDay);
             SaveCommand = new Command(saveDay());
-            //LoadFoodItemsCommand = new Command()
-
         }
 
         public Command CancelCommand { get; }
         public Command SaveCommand { get; }
         public Command LoadFoodItemsCommand { get; }
+        public Command AddCommand { get; }
 
         private day _day;
         private user _user;
@@ -72,7 +70,7 @@ namespace NutritionTracker.ViewModels
         }
 
 
-        public Action<object> saveDay()                //Saves day to database
+        public Action<object> saveDay()             //Saves day to database
         {
             Action<object> action = (object obj) =>
             {
@@ -99,10 +97,29 @@ namespace NutritionTracker.ViewModels
             return action;
         }
 
-        public async void cancelDay()              //Clicks back button
+        public async void cancelDay()               //Clicks back button
         {
             session.currentDay = null;
             await Shell.Current.GoToAsync("..");
+        }
+
+        public Action<object> LoadFoodItems()       //Loads foodItems for this day
+        {
+            Action<object> action = (object obj) =>
+            {
+                foodItemsRaw = dbm.getFoodItemsByDayAsync(_day);
+                foodItems = new ObservableCollection<foodItem>(foodItemsRaw);
+            };
+
+            foodItemsRaw = dbm.getFoodItemsByDayAsync(_day);
+            foodItems = new ObservableCollection<foodItem>(foodItemsRaw);
+
+            return action;
+        }
+
+        public async void AddFoodItem()
+        {
+            await Shell.Current.GoToAsync(nameof(FoodsPage));
         }
     }
 }

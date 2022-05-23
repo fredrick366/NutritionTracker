@@ -15,6 +15,7 @@ namespace NutritionTracker.Data
         public databaseManager(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
+            //database.DeleteAllAsync<foodItemEntry>().Wait();
             database.CreateTableAsync<day>().Wait();
             database.CreateTableAsync<foodItem>().Wait();
             database.CreateTableAsync<foodItemEntry>().Wait();
@@ -124,7 +125,7 @@ namespace NutritionTracker.Data
 
         public List<foodItemEntry> getFoodItemEntrysByDayAsync(day day)                 //Returns list of foodItemEntries associated with day
         {
-            if(day != null)
+            if (day != null)
             {
                 return database.Table<foodItemEntry>()
                             .Where(element => element.dayId == day.id)
@@ -226,7 +227,7 @@ namespace NutritionTracker.Data
 
             List<foodItem> foodItems = new List<foodItem>();
 
-            foreach(var foodItemEntry in foodItemEntries)
+            foreach (var foodItemEntry in foodItemEntries)
             {
                 foodItems.Add(getFoodItemByIdAsync(foodItemEntry.foodItemId));
             }

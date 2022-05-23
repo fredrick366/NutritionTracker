@@ -19,7 +19,7 @@ namespace NutritionTracker.ViewModels
             {
                 dailyIntake = 0;
 
-                foreach(foodItemEntry fie in dbm.getFoodItemEntrysByDayAsync(d))
+                foreach (foodItemEntry fie in dbm.getFoodItemEntrysByDayAsync(d))
                 {
                     dailyIntake = dailyIntake + (dbm.getFoodItemByIdAsync(fie.foodItemId).energy * fie.weight / 100);
                 }

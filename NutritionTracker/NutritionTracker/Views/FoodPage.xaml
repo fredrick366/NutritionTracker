@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutritionTracker.Views.FoodsPage"
-             Title="{Binding Title}"
+             Title="{Binding title}"
              xmlns:local="clr-namespace:NutritionTracker.ViewModels"  
              xmlns:model="clr-namespace:NutritionTracker.Models" 
-             xmlns:viewmodels="clr-namespace:NutritionTracker.ViewModels" x:DataType="viewmodels:FoodsViewModelTest"
+             xmlns:viewmodels="clr-namespace:NutritionTracker.ViewModels" x:DataType="viewmodels:SearchFoodViewModel"
              x:Name="BrowseFoodsPage">
 
     <ContentPage.ToolbarItems>
@@ -15,31 +15,36 @@
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-    <RefreshView x:DataType="local:FoodsViewModelTest" Command="{Binding LoadFoodsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name="FoodsListView"
-                ItemsSource="{Binding Foods}"
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="searchBar" HorizontalOptions="Center" SearchCommand="{Binding SearchFoodItems}" Placeholder="Food Item Name"></SearchBar>
+            <RefreshView x:DataType="local:SearchFoodViewModel" Command="{Binding SearchFoodItems}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="FoodsListView"
+                ItemsSource="{Binding foodItems}"
                 SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Food">
-                        <Label Text="{Binding FoodName}" 
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" x:DataType="model:foodItem">
+                                <Label Text="{Binding name}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListFoodTextStyle}" 
                             FontSize="16" />
-                        <Label Text="{Binding Weight}" 
+                                <!--<Label Text="{Binding Weight}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListFoodDetailTextStyle}"
-                            FontSize="13" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
+                            FontSize="13" />-->
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:FoodsViewModelTest}}, Path=FoodTapped}"		
                                 CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -23,7 +23,7 @@ namespace NutritionTracker.Models
         private int _mealTypeId;
         private int _weight;
 
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int id
         {
             get { return _id; }

@@ -11,7 +11,7 @@ namespace NutritionTracker.Views
         public AboutPage()
         {
             InitializeComponent();
-            generateTestData();
+            //generateTestData();
             loginTestUser();
         }
 
@@ -30,7 +30,7 @@ namespace NutritionTracker.Views
             }
             foreach(var fie in td.createFoodItemEntries())
             {
-                dbm.saveFoodItemEntryAsync(fie);
+                int mm = dbm.saveFoodItemEntryAsync(fie);
             }
             foreach(var mt in td.createMealTypes())
             {
