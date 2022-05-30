@@ -15,6 +15,7 @@ namespace NutritionTracker.ViewModels
         public SearchFoodViewModel()
         {
             title = "Search for food item";
+            searchString = "";
             AddFoodCommand = new Command(AddFoodItem);
             SearchFoodItems = new Command(getSearchResults());
         }
@@ -22,8 +23,15 @@ namespace NutritionTracker.ViewModels
         private string _searchString;
         private foodItem _selectedFoodItem;
         private List<foodItem> _foodItemsRaw;
+        private ObservableCollection<foodItem> _foodItems;
+        private string _name;
+        private int _energy;
 
-        public ObservableCollection<foodItem> foodItems;
+        public ObservableCollection<foodItem> foodItems
+        {
+            get { return _foodItems; }
+            set { _foodItems = value; }
+        }
         public Command AddFoodCommand { get; }
         public Command SearchFoodItems { get; }
 
@@ -46,6 +54,16 @@ namespace NutritionTracker.ViewModels
                 SetProperty(ref _selectedFoodItem, value);
                 OnFoodSelected(value);
             }
+        }
+        public string name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        public string energy
+        {
+            get { return _energy.ToString(); }
+            set { _energy = int.Parse(value); }
         }
 
         public void OnAppearing()
@@ -71,13 +89,32 @@ namespace NutritionTracker.ViewModels
         {
             Action<object> action = (object obj) =>
             {
+                IsBusy = true;
+
                 _foodItemsRaw = dbm.getFoodItemByNameAsync(searchString);
                 foodItems = new ObservableCollection<foodItem>(_foodItemsRaw);
+
+                IsBusy = false;
             };
+            IsBusy = true;
+
             _foodItemsRaw = dbm.getFoodItemByNameAsync(searchString);
             foodItems = new ObservableCollection<foodItem>(_foodItemsRaw);
 
+            IsBusy = false;
+
             return action;
+        }
+
+        public void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            searchString = e.NewTextValue;
+            
+            getSearchResults();
+            SearchFoodItems.Execute(null);
+
+            //_foodItemsRaw = dbm.getFoodItemByNameAsync(searchString);
+            //foodItems = new ObservableCollection<foodItem>(_foodItemsRaw);
         }
 
         public async void AddFoodItem()

@@ -28,5 +28,10 @@ namespace NutritionTracker.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
+
+        private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _viewModel.OnTextChanged(sender, e);
+        }
     }
 }
