@@ -13,6 +13,7 @@ namespace NutritionTracker.ViewModels
         {
             _day = session.currentDay;
             _foodItem = session.currentFoodItem;
+            name = _foodItem.name;
             mealTypes = dbm.getAllMealTypesAsync();
         }
 
@@ -21,6 +22,7 @@ namespace NutritionTracker.ViewModels
         private int _weight;                //Weight of foodItem consumed
         private List<mealType> _mealTypes;  //List of possible mealTypes
         private mealType _selectedMealType; //Mealtype this foodItem is consumed over
+        private string _name;               //FoodItem Name
 
         public int weight                   //UI field
         {
@@ -38,6 +40,12 @@ namespace NutritionTracker.ViewModels
         {
             get { return _selectedMealType; }
             set { _selectedMealType = value; }
+        }
+
+        public string name
+        {
+            get { return _name; }
+            set { _name = value; }
         }
 
         public void updateSession()

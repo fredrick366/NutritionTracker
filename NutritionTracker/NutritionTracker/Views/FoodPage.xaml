@@ -18,62 +18,35 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="searchBar" HorizontalOptions="Center" Text="{Binding searchString}" TextChanged="searchBar_TextChanged" SearchCommand="{Binding SearchFoodItems}" Placeholder="Food Item Name"></SearchBar>
-            <!--<ListView x:Name="listView" ItemsSource="{Binding foodItems}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        --><!--<ViewCell>
-                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Label Grid.Column="1"
-                 Text="{Binding name}"
-                 TextColor="#24e97d"
-                 FontSize="24"/>
-
-
-
-                                <Label Grid.Column="1"
-                  Grid.Row="1"
-                   Text="{Binding energy}"
-                   TextColor="White"
-                   FontSize="18"
-                   Opacity="0.6"/>
-
-                            </Grid>
-                        </ViewCell>--><!--
-                        <TextCell Text="{Binding name}"></TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
             <RefreshView x:Name="refreshView" x:DataType="local:SearchFoodViewModel" Command="{Binding SearchFoodItems}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                 <CollectionView x:Name="FoodsListView"
-                ItemsSource="{Binding foodItems}"
-                SelectionMode="None">
+                                ItemsSource="{Binding foodItems}"
+                                SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Padding="10" x:DataType="model:foodItem">
-                                <Label Text="{Binding name}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListFoodTextStyle}" 
-                            FontSize="16" />
-                                <!--<Label Text="{Binding Weight}" 
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListFoodDetailTextStyle}"
-                            FontSize="13" />-->
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:FoodsViewModelTest}}, Path=FoodTapped}"		
-                                CommandParameter="{Binding .}">
-                                    </TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="1"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding name}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListFoodTextStyle}" 
+                                            FontSize="16"/>
+                                    <Button x:Name="AddBtn"
+                                            Grid.Column="2"
+                                            Text="Add" 
+                                            HorizontalOptions="End"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SearchFoodViewModel}}, Path=AddFoodCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                </Grid>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

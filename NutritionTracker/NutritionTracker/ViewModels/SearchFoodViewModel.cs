@@ -16,7 +16,7 @@ namespace NutritionTracker.ViewModels
         {
             title = "Search for food item";
             searchString = "";
-            AddFoodCommand = new Command(AddFoodItem);
+            AddFoodCommand = new Command<foodItem>(AddFoodItem);
             SearchFoodItems = new Command(getSearchResults());
         }
 
@@ -89,37 +89,27 @@ namespace NutritionTracker.ViewModels
         {
             Action<object> action = (object obj) =>
             {
-                IsBusy = true;
-
                 _foodItemsRaw = dbm.getFoodItemByNameAsync(searchString);
                 foodItems = new ObservableCollection<foodItem>(_foodItemsRaw);
-
-                IsBusy = false;
             };
-            IsBusy = true;
-
             _foodItemsRaw = dbm.getFoodItemByNameAsync(searchString);
             foodItems = new ObservableCollection<foodItem>(_foodItemsRaw);
-
-            IsBusy = false;
 
             return action;
         }
 
-        public void OnTextChanged(object sender, TextChangedEventArgs e)
+        public ObservableCollection<foodItem> OnTextChanged(object sender, TextChangedEventArgs e)
         {
             searchString = e.NewTextValue;
-            
             getSearchResults();
-            SearchFoodItems.Execute(null);
 
-            //_foodItemsRaw = dbm.getFoodItemByNameAsync(searchString);
-            //foodItems = new ObservableCollection<foodItem>(_foodItemsRaw);
+            return foodItems;
         }
 
-        public async void AddFoodItem()
+        public async void AddFoodItem(foodItem foodItem)
         {
-            await Shell.Current.GoToAsync(nameof(NewFoodPage));
+            session.currentFoodItem = foodItem;
+            await Shell.Current.GoToAsync(nameof(FoodItemEntrySettingsPage));
         }
     }
 }

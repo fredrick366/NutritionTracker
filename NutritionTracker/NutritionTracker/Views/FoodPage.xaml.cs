@@ -31,7 +31,7 @@ namespace NutritionTracker.Views
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _viewModel.OnTextChanged(sender, e);
+            FoodsListView.ItemsSource = _viewModel.OnTextChanged(sender, e);
         }
     }
 }
