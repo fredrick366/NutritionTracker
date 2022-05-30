@@ -37,6 +37,7 @@
         <!--is the add new food item page-->
         <ShellContent Title="Diary Entry" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:DiarysPage}" />
         <ShellContent Title="Login" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:LoginPage}" />
+        <ShellContent Title="Register" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:RegisterPage}" />
         <ShellContent Title="Profile" Icon="icon_about.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
         <!--the login goes to another page that does the signin profile object-->
         <!--profile will be new page that shows info and saved to database - seperate button to view profile or must through log in?-->
