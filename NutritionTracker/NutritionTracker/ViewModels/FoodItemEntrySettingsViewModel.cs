@@ -29,7 +29,7 @@ namespace NutritionTracker.ViewModels
         private foodItem _foodItem;         //FoodItem being entered
         private int _weight;                //Weight of foodItem consumed
         private List<mealType> _mealTypes;  //List of possible mealTypes
-        private string _selectedMealType; //Mealtype this foodItem is consumed over
+        private string _selectedMealType;   //Mealtype this foodItem is consumed over
         private string _name;               //FoodItem Name
 
         public Command SaveCommand { get; }
@@ -47,7 +47,7 @@ namespace NutritionTracker.ViewModels
             set { _mealTypes = value; }
         }
 
-        public string selectedMealType    //Selected radio button
+        public string selectedMealType      //Selected radio button
         {
             get { return _selectedMealType; }
             set { _selectedMealType = value; }
@@ -67,8 +67,8 @@ namespace NutritionTracker.ViewModels
 
         private bool ValidateSave()
         {
-            return weight > 0
-                && selectedMealType != null;
+            return weight > 0;
+                //&& selectedMealType != null;
         }
 
         private async void OnSave()

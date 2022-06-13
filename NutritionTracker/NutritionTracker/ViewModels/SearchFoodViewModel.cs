@@ -16,6 +16,7 @@ namespace NutritionTracker.ViewModels
         {
             title = "Search for food item";
             searchString = "";
+            _day = session.currentDay;
             AddFoodCommand = new Command<foodItem>(AddFoodItem);
             SearchFoodItems = new Command(getSearchResults());
             if(session.previousPage == "NutritionTracker.ViewModels.FoodItemEntriesViewModel")
@@ -29,6 +30,7 @@ namespace NutritionTracker.ViewModels
         }
 
         private string _searchString;
+        private day _day;
         private foodItem _selectedFoodItem;
         private List<foodItem> _foodItemsRaw;
         private ObservableCollection<foodItem> _foodItems;
@@ -123,6 +125,7 @@ namespace NutritionTracker.ViewModels
         public async void AddFoodItem(foodItem foodItem)
         {
             session.currentFoodItem = foodItem;
+            session.currentDay = _day;
             session.previousPage = this.GetType().ToString();
             await Shell.Current.GoToAsync(nameof(FoodItemEntrySettingsPage));
         }
