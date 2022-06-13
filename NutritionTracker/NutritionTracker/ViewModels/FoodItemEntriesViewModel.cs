@@ -119,6 +119,7 @@ namespace NutritionTracker.ViewModels
 
         public async void AddFoodItem()
         {
+            session.previousPage = this.GetType().ToString();
             await Shell.Current.GoToAsync(nameof(FoodsPage));
         }
     }

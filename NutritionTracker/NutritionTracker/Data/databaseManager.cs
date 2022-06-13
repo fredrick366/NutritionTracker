@@ -15,7 +15,13 @@ namespace NutritionTracker.Data
         public databaseManager(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
-            //database.DeleteAllAsync<foodItemEntry>().Wait();
+
+            //database.DropTableAsync<day>().Wait();
+            //database.DropTableAsync<foodItem>().Wait();
+            //database.DropTableAsync<foodItemEntry>().Wait();
+            //database.DropTableAsync<mealType>().Wait();
+            //database.DropTableAsync<user>().Wait();
+
             database.CreateTableAsync<day>().Wait();
             database.CreateTableAsync<foodItem>().Wait();
             database.CreateTableAsync<foodItemEntry>().Wait();

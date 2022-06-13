@@ -12,11 +12,13 @@ namespace NutritionTracker.Services
             currentUser = null;
             currentFoodItem = null;
             currentDay = null;
+            previousPage = "";
         }
 
         private user _currentUser;
         private foodItem _currentFoodItem;
         private day _currentDay;
+        private string _previousPage;
 
         public user currentUser
         {
@@ -34,6 +36,12 @@ namespace NutritionTracker.Services
         {
             get { return _currentDay; }
             set { _currentDay = value; }
+        }
+
+        public string previousPage
+        {
+            get { return _previousPage; }
+            set { _previousPage = value; }
         }
     }
 }

@@ -24,7 +24,7 @@
                                 SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Padding="10" x:DataType="model:foodItem">
+                            <StackLayout Padding="10" x:DataType="model:foodItem" x:Name="foodItemStack">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="40"/>
@@ -42,6 +42,7 @@
                                             FontSize="16"/>
                                     <Button x:Name="AddBtn"
                                             Grid.Column="2"
+                                            IsVisible="{Binding Source={RelativeSource AncestorType={x:Type local:SearchFoodViewModel}}, Path=addBtnVisible}"
                                             Text="Add" 
                                             HorizontalOptions="End"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:SearchFoodViewModel}}, Path=AddFoodCommand}"

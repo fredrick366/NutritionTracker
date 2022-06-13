@@ -18,6 +18,14 @@ namespace NutritionTracker.ViewModels
             searchString = "";
             AddFoodCommand = new Command<foodItem>(AddFoodItem);
             SearchFoodItems = new Command(getSearchResults());
+            if(session.previousPage == "NutritionTracker.ViewModels.FoodItemEntriesViewModel")
+            {
+                addBtnVisible = true;
+            } else
+            {
+                addBtnVisible = false;
+            }
+            
         }
 
         private string _searchString;
@@ -26,6 +34,7 @@ namespace NutritionTracker.ViewModels
         private ObservableCollection<foodItem> _foodItems;
         private string _name;
         private int _energy;
+        private bool _addBtnVisible;
 
         public ObservableCollection<foodItem> foodItems
         {
@@ -64,6 +73,11 @@ namespace NutritionTracker.ViewModels
         {
             get { return _energy.ToString(); }
             set { _energy = int.Parse(value); }
+        }
+        public bool addBtnVisible
+        {
+            get { return _addBtnVisible; }
+            set { _addBtnVisible = value; }
         }
 
         public void OnAppearing()
@@ -109,6 +123,7 @@ namespace NutritionTracker.ViewModels
         public async void AddFoodItem(foodItem foodItem)
         {
             session.currentFoodItem = foodItem;
+            session.previousPage = this.GetType().ToString();
             await Shell.Current.GoToAsync(nameof(FoodItemEntrySettingsPage));
         }
     }

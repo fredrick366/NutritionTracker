@@ -49,6 +49,7 @@ namespace NutritionTracker.ViewModels
         public void updateSession()         //Updates session variables
         {
             session.currentDay = selectedDay;
+            session.previousPage = this.GetType().ToString();
         }
 
         public int deleteDay(day day)       //Deletes selected day

@@ -7,12 +7,26 @@
              x:Class="NutritionTracker.Views.FoodItemEntrySettingsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding name}" FontSize="Medium"/>
+            <Label Text="{Binding name}" FontSize="Large" HorizontalTextAlignment="Center"/>
             <Label Text="Weight" FontSize="Medium" />
             <Editor Text="{Binding weight, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="Please select meal:"/>
+            <ListView ItemsSource="{Binding mealTypes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout x:DataType="model:mealType"
+                                         RadioButtonGroup.GroupName="mealType"
+                                         RadioButtonGroup.SelectedValue="{Binding Source={RelativeSource AncestorType={x:Type local:FoodItemEntrySettingsViewModel}}, Path=selectedMealType}">
+                                <RadioButton Content="{Binding name}" Value="{Binding id}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <StackLayout Orientation="Horizontal">
-                <!--<Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>-->
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
