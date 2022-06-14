@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using NutritionTracker.Data;
 using NutritionTracker.Models;
 using NutritionTracker.Views;
@@ -15,7 +16,17 @@ namespace NutritionTracker.ViewModels
         {
             _day = session.currentDay;
             _foodItem = session.currentFoodItem;
-            _weight = 100;
+            _foodItemEntry = dbm.getFoodItemEntrysByDayAsync(_day).FirstOrDefault(element => element.foodItemId == _foodItem.id);
+
+            if(_foodItemEntry == null)
+            {
+                _weight = 100;
+            } else
+            {
+                _weight = _foodItemEntry.weight;
+                _selectedMealType = _foodItemEntry.mealTypeId.ToString();
+            }
+
             name = _foodItem.name;
             mealTypes = dbm.getAllMealTypesAsync();
 
@@ -27,6 +38,7 @@ namespace NutritionTracker.ViewModels
 
         private day _day;                   //Day this foodItemEntry is associated with
         private foodItem _foodItem;         //FoodItem being entered
+        private foodItemEntry _foodItemEntry;   //FoodItemEntry for when this is edit not add
         private int _weight;                //Weight of foodItem consumed
         private List<mealType> _mealTypes;  //List of possible mealTypes
         private string _selectedMealType;   //Mealtype this foodItem is consumed over
@@ -73,6 +85,7 @@ namespace NutritionTracker.ViewModels
 
         private async void OnSave()
         {
+            
             foodItemEntry foodItemEntry = new foodItemEntry(_day.id, _foodItem.id, int.Parse(selectedMealType), weight);
 
             dbm.saveFoodItemEntryAsync(foodItemEntry);

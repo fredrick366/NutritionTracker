@@ -22,10 +22,29 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Padding="10" x:DataType="model:foodItem">
-                                <Label Text="{Binding name}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListDiaryTextStyle}" 
-                            FontSize="16" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="1"
+                                        Text="{Binding name}" 
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListDiaryTextStyle}" 
+                                        FontSize="16" />
+                                    <Button x:Name="EditBtn"
+                                        VerticalOptions="Center"
+                                        Grid.Column="2"
+                                        Text="Edit" 
+                                        HorizontalOptions="End"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:FoodItemEntriesViewModel}}, Path=EditFoodItemEntryCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Grid>
                                 <!--<Label Text="{Binding Description}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListDiaryDetailTextStyle}"

@@ -17,7 +17,7 @@
                         <ViewCell>
                             <StackLayout x:DataType="model:mealType"
                                          RadioButtonGroup.GroupName="mealType"
-                                         RadioButtonGroup.SelectedValue="{Binding Source={RelativeSource AncestorType={x:Type local:FoodItemEntrySettingsViewModel}}, Path=selectedMealType}">
+                                         RadioButtonGroup.SelectedValue="{Binding Source={RelativeSource AncestorType={x:Type local:FoodItemEntrySettingsViewModel}}, Path=selectedMealType, Mode=TwoWay}">
                                 <RadioButton Content="{Binding name}" Value="{Binding id}"/>
                             </StackLayout>
                         </ViewCell>

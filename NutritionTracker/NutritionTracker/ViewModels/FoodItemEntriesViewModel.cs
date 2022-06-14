@@ -28,6 +28,7 @@ namespace NutritionTracker.ViewModels
                 _date = _day.date;
             }
 
+            EditFoodItemEntryCommand = new Command<foodItem>(EditFoodItemEntry);
             AddCommand = new Command(AddFoodItem);
             LoadFoodItemsCommand = new Command(LoadFoodItems());
             CancelCommand = new Command(cancelDay);
@@ -38,6 +39,7 @@ namespace NutritionTracker.ViewModels
         public Command SaveCommand { get; }
         public Command LoadFoodItemsCommand { get; }
         public Command AddCommand { get; }
+        public Command EditFoodItemEntryCommand { get; }
 
         private day _day;
         private user _user;
@@ -100,7 +102,7 @@ namespace NutritionTracker.ViewModels
         public async void cancelDay()               //Clicks back button
         {
             session.currentDay = null;
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync(nameof(DiarysPage));
         }
 
         public Action<object> LoadFoodItems()       //Loads foodItems for this day
@@ -121,6 +123,14 @@ namespace NutritionTracker.ViewModels
         {
             session.previousPage = this.GetType().ToString();
             await Shell.Current.GoToAsync(nameof(FoodsPage));
+        }
+
+        public async void EditFoodItemEntry(foodItem foodItem)
+        {
+            session.currentFoodItem = foodItem;
+            session.currentDay = _day;
+            session.previousPage = this.GetType().ToString();
+            await Shell.Current.GoToAsync(nameof(FoodItemEntrySettingsPage));
         }
     }
 }
